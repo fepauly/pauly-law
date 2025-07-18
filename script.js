@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initCountUpAnimation();
     initScrollAnimations();
     initParticleAnimation();
+    initScrollProgress();
+    initKeyboardShortcuts();
+    // initTypingAnimation(); // Disabled to prevent card resizing
 });
 
 // Counter Animation for Statistics
@@ -159,6 +162,167 @@ function createParticle(container) {
     }, duration * 1000);
 }
 
+// Scroll Progress Indicator
+function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = Math.min(scrolled, 100) + '%';
+    });
+}
+
+// Typing Animation for Title
+function initTypingAnimation() {
+    const titleElement = document.querySelector('.gradient-text');
+    if (!titleElement) return;
+    
+    const originalText = titleElement.textContent;
+    titleElement.textContent = '';
+    titleElement.style.borderRight = '3px solid #c8960d';
+    
+    let i = 0;
+    const typeWriter = () => {
+        if (i < originalText.length) {
+            titleElement.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        } else {
+            // Remove cursor after typing is complete
+            setTimeout(() => {
+                titleElement.style.borderRight = 'none';
+            }, 1000);
+        }
+    };
+    
+    // Start typing animation after a delay
+    setTimeout(typeWriter, 1500);
+}
+
+// Easter Egg Function
+function showEasterEgg() {
+    const messages = [
+        "🎉 Noch einmal: HERZLICHEN GLÜCKWUNSCH! 🎉",
+        "💼 Auf eine erfolgreiche Zukunft als Jurist! 💼",
+        "⭐ Du bist einfach der Beste! ⭐",
+        "🏆 Stolz auf meinen Bruder! 🏆",
+        "📚 All die harten Jahre haben sich gelohnt! 📚"
+    ];
+    
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    
+    // Create temporary toast notification
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: linear-gradient(45deg, #c8960d, #e2b340);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(200, 150, 13, 0.3);
+        z-index: 2000;
+        font-weight: 600;
+        animation: slideInRight 0.5s ease, slideOutRight 0.5s ease 3s;
+        backdrop-filter: blur(10px);
+    `;
+    
+    toast.textContent = randomMessage;
+    document.body.appendChild(toast);
+    
+    // Add animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Remove after animation
+    setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+        if (style.parentNode) style.parentNode.removeChild(style);
+    }, 4000);
+    
+    // Add sparkle effect
+    createSparkles();
+}
+
+// Sparkle Effect for Easter Egg
+function createSparkles() {
+    const sparkleContainer = document.createElement('div');
+    sparkleContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1999;
+    `;
+    document.body.appendChild(sparkleContainer);
+    
+    for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.innerHTML = '✨';
+        sparkle.style.cssText = `
+            position: absolute;
+            font-size: ${Math.random() * 20 + 10}px;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: sparkleFloat ${Math.random() * 2 + 1}s ease-in-out forwards;
+        `;
+        sparkleContainer.appendChild(sparkle);
+    }
+    
+    // Add sparkle animation
+    const sparkleStyle = document.createElement('style');
+    sparkleStyle.textContent = `
+        @keyframes sparkleFloat {
+            0% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: scale(0) rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(sparkleStyle);
+    
+    // Clean up
+    setTimeout(() => {
+        if (sparkleContainer.parentNode) sparkleContainer.parentNode.removeChild(sparkleContainer);
+        if (sparkleStyle.parentNode) sparkleStyle.parentNode.removeChild(sparkleStyle);
+    }, 3000);
+}
+
+// Keyboard Shortcuts
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function(event) {
+        // Spacebar for celebration
+        if (event.code === 'Space' && !event.target.matches('input, textarea')) {
+            event.preventDefault();
+            showCelebration();
+        }
+        
+        // 'C' for confetti
+        if (event.key.toLowerCase() === 'c' && event.ctrlKey) {
+            event.preventDefault();
+            createConfetti();
+        }
+        
+        // 'S' for sparkles
+        if (event.key.toLowerCase() === 's' && event.ctrlKey) {
+            event.preventDefault();
+            createSparkles();
+        }
+    });
+}
+
 // Celebration Modal Functions
 function showCelebration() {
     const modal = document.getElementById('celebrationModal');
@@ -181,12 +345,12 @@ function hideCelebration() {
 
 // Confetti Animation
 function createConfetti() {
-    const confettiContainer = document.querySelector('.confetti');
-    const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
+    const confettiContainer = document.querySelector('.confetti') || document.body;
+    const colors = ['#c8960d', '#e2b340', '#f4d03f', '#45b7d1', '#96ceb4', '#ffeaa7'];
     
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
-        confetti.style.position = 'absolute';
+        confetti.style.position = 'fixed';
         confetti.style.width = Math.random() * 8 + 4 + 'px';
         confetti.style.height = confetti.style.width;
         confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -194,9 +358,10 @@ function createConfetti() {
         confetti.style.top = '-10px';
         confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
         confetti.style.pointerEvents = 'none';
+        confetti.style.zIndex = '2000';
         confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
         
-        confettiContainer.appendChild(confetti);
+        document.body.appendChild(confetti);
         
         // Remove confetti after animation
         setTimeout(() => {
