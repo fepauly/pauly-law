@@ -8,8 +8,9 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #2d3748;
     overflow-x: hidden;
+    background: #fafbfc;
 }
 
 .container {
@@ -43,11 +44,11 @@ body {
     gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #1a365d;
+    color: #2d3748;
 }
 
 .nav-brand i {
-    color: #d4af37;
+    color: #c8960d;
     font-size: 1.8rem;
 }
 
@@ -58,8 +59,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #e6f3ff 0%, #f0f4f8 50%, #fef7f0 100%);
+    color: #2d3748;
     overflow: hidden;
 }
 
@@ -98,14 +99,15 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(200, 150, 13, 0.15);
     padding: 0.5rem 1rem;
     border-radius: 50px;
     margin-bottom: 2rem;
     font-size: 0.9rem;
     font-weight: 500;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(200, 150, 13, 0.3);
+    color: #744210;
 }
 
 .hero-title {
@@ -116,7 +118,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    background: linear-gradient(45deg, #c8960d, #e2b340, #f4d03f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -125,10 +127,11 @@ body {
 .hero-subtitle {
     font-size: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: 3rem;
-    opacity: 0.9;
+    opacity: 0.8;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: #4a5568;
 }
 
 .hero-stats {
@@ -148,20 +151,21 @@ body {
 .stat-number {
     font-size: 3rem;
     font-weight: 700;
-    color: #ffd700;
+    color: #c8960d;
     margin-bottom: 0.5rem;
 }
 
 .stat-label {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.7;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #4a5568;
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #ffd700, #ffed4e);
-    color: #1a365d;
+    background: linear-gradient(45deg, #c8960d, #e2b340);
+    color: white;
     border: none;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -172,18 +176,18 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(200, 150, 13, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(200, 150, 13, 0.4);
 }
 
 /* Achievement Section */
 .achievement {
     padding: 5rem 0;
-    background: #f8fafc;
+    background: #f8fafb;
 }
 
 .achievement-content {
@@ -194,13 +198,13 @@ body {
 
 .achievement-icon {
     font-size: 4rem;
-    color: #d4af37;
+    color: #c8960d;
     margin-bottom: 2rem;
 }
 
 .achievement h2 {
     font-size: 2.5rem;
-    color: #1a365d;
+    color: #2d3748;
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -257,8 +261,9 @@ body {
 }
 
 .timeline-item.completed .timeline-icon {
-    background: linear-gradient(45deg, #d4af37, #ffd700);
+    background: linear-gradient(45deg, #c8960d, #e2b340);
     color: white;
+    box-shadow: 0 4px 15px rgba(200, 150, 13, 0.3);
 }
 
 .timeline-item.future .timeline-icon {
@@ -270,7 +275,7 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #1a365d;
+    color: #2d3748;
 }
 
 .timeline-content p {
@@ -287,7 +292,7 @@ body {
 .future h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: #1a365d;
+    color: #2d3748;
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -310,29 +315,30 @@ body {
 }
 
 .card {
-    background: white;
+    background: linear-gradient(145deg, #ffffff, #f8fafb);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(45, 55, 72, 0.08);
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(200, 150, 13, 0.1);
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px rgba(45, 55, 72, 0.12);
+    border-color: rgba(200, 150, 13, 0.2);
 }
 
 .card-icon {
     font-size: 3rem;
-    color: #d4af37;
+    color: #c8960d;
     margin-bottom: 1.5rem;
 }
 
 .card h3 {
     font-size: 1.5rem;
-    color: #1a365d;
+    color: #2d3748;
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -357,15 +363,17 @@ body {
 
 .modal-content {
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f8fafb 0%, #e6f3ff 50%, #fef7f0 100%);
     margin: 10% auto;
     padding: 3rem;
     border-radius: 20px;
     width: 90%;
     max-width: 500px;
     text-align: center;
-    color: white;
+    color: #2d3748;
     animation: modalSlideIn 0.5s ease;
+    border: 2px solid rgba(200, 150, 13, 0.2);
+    box-shadow: 0 25px 50px rgba(45, 55, 72, 0.15);
 }
 
 @keyframes modalSlideIn {
@@ -377,7 +385,7 @@ body {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
-    color: white;
+    color: #4a5568;
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
@@ -391,13 +399,14 @@ body {
 .celebration-content h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #ffd700;
+    color: #c8960d;
 }
 
 .celebration-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.8;
+    color: #4a5568;
 }
 
 .celebration-icons {
@@ -405,7 +414,7 @@ body {
     justify-content: center;
     gap: 1rem;
     font-size: 2rem;
-    color: #ffd700;
+    color: #c8960d;
 }
 
 .confetti {
@@ -416,9 +425,9 @@ body {
     bottom: 0;
     pointer-events: none;
     background-image: 
-        radial-gradient(circle at 20% 20%, #ffd700 2px, transparent 2px),
-        radial-gradient(circle at 80% 80%, #ff6b6b 2px, transparent 2px),
-        radial-gradient(circle at 40% 40%, #4ecdc4 2px, transparent 2px);
+        radial-gradient(circle at 20% 20%, #c8960d 2px, transparent 2px),
+        radial-gradient(circle at 80% 80%, #e2b340 2px, transparent 2px),
+        radial-gradient(circle at 40% 40%, #f4d03f 2px, transparent 2px);
     animation: confettifall 3s ease-in-out infinite;
 }
 
@@ -429,7 +438,7 @@ body {
 
 /* Footer */
 .footer {
-    background: #1a365d;
+    background: #2d3748;
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -451,7 +460,7 @@ body {
 }
 
 .footer-brand i {
-    color: #d4af37;
+    color: #c8960d;
     font-size: 1.4rem;
 }
 
