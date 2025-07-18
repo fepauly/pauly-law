@@ -390,25 +390,6 @@ body {
     transform: translateY(-5px);
 }
 
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    right: -1rem;
-    width: 2rem;
-    height: 2px;
-    background: linear-gradient(90deg, #e2e8f0, transparent);
-    transition: all 0.3s ease;
-}
-
-.timeline-item:hover::after {
-    background: linear-gradient(90deg, #c8960d, transparent);
-}
-
-.timeline-item:last-child::after {
-    display: none;
-}
-
 .timeline-icon {
     width: 60px;
     height: 60px;
@@ -690,10 +671,6 @@ body {
     .hero-stats {
         grid-template-columns: 1fr;
         gap: 1rem;
-    }
-    
-    .timeline-item::after {
-        display: none;
     }
     
     .journey-timeline {
